@@ -1,0 +1,26 @@
+{
+  "name": "spendlytime",
+  "version": "0.0.0",
+  "description": "The application for track your spend time on internet.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "webpack-dev-server --mode development --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maklero/spendlytime.git"
+  },
+  "author": "Michał Gołda",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.42.1",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
