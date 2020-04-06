@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication
 
-from spendlytime.api import serializers
 from spendlytime import models
+from spendlytime.api import serializers
 
 
 class TraceViewSet(viewsets.ModelViewSet):
@@ -20,6 +20,7 @@ class TraceViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
+
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
     The user view, return all users
@@ -28,7 +29,6 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.UserSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
-
 
     @action(detail=True)
     def traces(self, request, pk=None):
