@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework import routers
 from spendlytime.api import views
 
@@ -8,5 +8,10 @@ ROUTER = routers.DefaultRouter()
 ROUTER.register(r'users', views.UserViewSet)
 ROUTER.register(r'traces', views.TraceViewSet)
 
-urlpatterns = []
+# All routers without view sets
+urlpatterns = [
+    path('auth/', include([
+        path('token/', views.ApiTokenView.as_view())
+    ]))
+]
 urlpatterns += ROUTER.urls
