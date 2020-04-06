@@ -11,7 +11,7 @@ ROUTER.register(r'traces', views.TraceViewSet)
 # All routers without view sets
 urlpatterns = [
     path('auth/', include([
-        path('token/', views.ApiTokenView.as_view())
+        path('token/', views.TokenApiView.as_view())
     ]))
 ]
 urlpatterns += ROUTER.urls
