@@ -25,7 +25,7 @@ SECRET_KEY = '!+cw9!1i+^u^3ougs9q32t&l@s&nm-*b39_0#%8b)#z2c8_%u!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
 
 
 # Application definition
@@ -77,6 +77,12 @@ WSGI_APPLICATION = 'wsgi.application'
 
 # Cors
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Rest framework
+REST_FRAMEWORK = {
+    'TEST_REQUEST_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
