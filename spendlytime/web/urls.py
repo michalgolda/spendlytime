@@ -1,6 +1,6 @@
 from django.urls import path
-from spendlytime.web import views
+from spendlytime.web.frontend.react import ReactView
 
 urlpatterns = [
-    path('', views.index)
+    path('', ReactView.as_view())
 ]
