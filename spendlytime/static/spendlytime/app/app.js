@@ -1,5 +1,14 @@
 import React from "react";
+import { GlobalStyles } from "./utils/styles/global";
+import { RouterComponent as Router } from "./components";
+
+import { routes } from "./routes";
 
 export default function App() {
-    return <h1>Hello, World!</h1>;
+    return (
+        <>
+            <GlobalStyles />
+            <Router routes={routes()} />
+        </>
+    );
 }
