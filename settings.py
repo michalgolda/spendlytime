@@ -81,7 +81,14 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Rest framework
 REST_FRAMEWORK = {
     'TEST_REQUEST_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'spendlytime.api.auth.SessionAuthentication',
+    ]
 }
 
 # Database
