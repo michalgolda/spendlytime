@@ -1,10 +1,9 @@
 from django.contrib.auth.models import User
 
+from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
@@ -15,41 +14,57 @@ from spendlytime import models
 from spendlytime.api import serializers
 
 
-class TraceViewSet(ModelViewSet):
+class TraceListAPIView(APIView):
     """
     The trace view, return all traces from current session user
     and afford a create new trace
     """
-    queryset = models.Trace.objects.all()
-    serializer_class = serializers.TraceSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
+    def get(self, request, pk=None):
+        current_user = request.user
+        if not pk:
+            traces = models.Trace.objects.filter(user_id=current_user.id).all()
+        else:
+            traces = models.Trace.objects.filter(
+                id=pk, user_id=current_user.id)
+            if not traces:
+                return Response([], status.HTTP_404_NOT_FOUND)
 
-class UserViewSet(ReadOnlyModelViewSet):
-    """
-    The user view, return all users
-    """
-    queryset = User.objects.all()
-    serializer_class = serializers.UserSerializer
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    @action(detail=True)
-    def traces(self, request, pk=None):
-        traces = models.Trace.objects.filter(user_id=pk)
         serializer = serializers.TraceSerializer(traces, many=True)
 
         return Response(serializer.data)
 
-    @action(detail=False)
-    def me(self, request):
-        serializer = serializers.UserSerializer(instance=request.user)
+    def post(self, request):
+        serializer = serializers.TraceSerializer(
+            context={'request': request}, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        else:
+            errors = serializer.errors
+
+            return Response(errors, status.HTTP_400_BAD_REQUEST)
+
+
+class MeAPIView(APIView):
+    """
+    This view is returing current user.
+    """
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        current_user = request.user
+        user = User.objects.filter(id=current_user.id)
+        serializer = serializers.UserSerializer(user, many=True)
+
         return Response(serializer.data)
 
 
-
-class TokenApiView(APIView):
+class TokenAPIView(APIView):
     """
     The api token view class, generating a auth token
     """
