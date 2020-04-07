@@ -4,8 +4,6 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -19,7 +17,6 @@ class TraceListAPIView(APIView):
     The trace view, return all traces from current session user
     and afford a create new trace
     """
-    authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, pk=None):
@@ -53,7 +50,6 @@ class MeAPIView(APIView):
     """
     This view is returing current user.
     """
-    authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -68,8 +64,6 @@ class TokenAPIView(APIView):
     """
     The api token view class, generating a auth token
     """
-    allowed_methods = ["POST"]
-    authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
