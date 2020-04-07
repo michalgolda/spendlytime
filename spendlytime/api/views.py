@@ -42,6 +42,12 @@ class UserViewSet(ReadOnlyModelViewSet):
 
         return Response(serializer.data)
 
+    @action(detail=False)
+    def me(self, request):
+        serializer = serializers.UserSerializer(instance=request.user)
+        return Response(serializer.data)
+
+
 
 class TokenApiView(APIView):
     """
