@@ -1,17 +1,16 @@
 from django.urls import path, include
-from rest_framework import routers
 from spendlytime.api import views
-
-# The root router for rest framework, return a api gui interface but only development mode
-# This variable is UPPER CASE because pep8 dedicated a use for this situation
-ROUTER = routers.DefaultRouter()
-ROUTER.register(r'users', views.UserViewSet)
-ROUTER.register(r'traces', views.TraceViewSet)
 
 # All routers without view sets
 urlpatterns = [
     path('auth/', include([
-        path('token/', views.TokenApiView.as_view())
+        path('token/', views.TokenAPIView.as_view(), name="api-auth-token")
+    ])),
+    path('traces/', include([
+        path('', views.TraceListAPIView.as_view(), name="api-traces"),
+        path('<int:pk>/', views.TraceListAPIView.as_view(), name="api-trace-by-id")
+    ])),
+    path('users/', include([
+        path('me/', views.MeAPIView.as_view(), name="api-me")
     ]))
 ]
-urlpatterns += ROUTER.urls
