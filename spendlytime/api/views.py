@@ -1,14 +1,16 @@
+from django.http import Http404
 from django.contrib.auth.models import User
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import APIException
 
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 
-from spendlytime import models
+from spendlytime.models import Trace
 from spendlytime.api import serializers
 
 
@@ -19,12 +21,18 @@ class TraceListAPIView(APIView):
     """
     permission_classes = [IsAuthenticated]
 
+    def get_object(self, pk):
+        try:
+            return Trace.objects.get(id=pk)
+        except Trace.DoesNotExist:
+            raise Http404
+
     def get(self, request, pk=None):
         current_user = request.user
         if not pk:
-            traces = models.Trace.objects.filter(user_id=current_user.id).all()
+            traces = Trace.objects.filter(user_id=current_user.id).all()
         else:
-            traces = models.Trace.objects.filter(
+            traces = Trace.objects.filter(
                 id=pk, user_id=current_user.id)
             if not traces:
                 return Response([], status.HTTP_404_NOT_FOUND)
@@ -35,7 +43,7 @@ class TraceListAPIView(APIView):
 
     def post(self, request):
         serializer = serializers.TraceSerializer(
-            context={'request': request}, data=request.data)
+            context={"request": request}, data=request.data)
         if serializer.is_valid():
             serializer.save()
 
@@ -44,6 +52,12 @@ class TraceListAPIView(APIView):
             errors = serializer.errors
 
             return Response(errors, status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk=None):
+        trace = self.get_object(pk)
+        trace.delete()
+
+        return Response(status=status.HTTP_200_OK)
 
 
 class MeAPIView(APIView):
