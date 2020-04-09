@@ -8,8 +8,12 @@ export const routes = () => {
             "exact": true
         },
         {
+            "path": "/auth/login",
+            "component": views.LoginView
+        },
+        {
             "path": "",
             "component": views.NotFoundView
-        }
+        },
     ];
 };
