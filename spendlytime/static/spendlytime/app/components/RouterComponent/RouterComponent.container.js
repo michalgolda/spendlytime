@@ -21,7 +21,7 @@ function RouterComponent(props) {
 }
 
 RouterComponent.propTypes = {
-    routes: PropTypes.object.isRequired,
+    routes: PropTypes.array.isRequired,
 };
 
 export default RouterComponent;
