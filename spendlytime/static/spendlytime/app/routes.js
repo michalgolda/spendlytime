@@ -12,6 +12,10 @@ export const routes = () => {
             "component": views.LoginView
         },
         {
+            "path": "/auth/register",
+            "component": views.RegisterView
+        },
+        {
             "path": "",
             "component": views.NotFoundView
         },
