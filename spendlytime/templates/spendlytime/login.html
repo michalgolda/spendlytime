@@ -8,7 +8,12 @@
                     <div class="logo__text">Spendlytime.com</div>
                 </div>
             </div>
-            <form class="auth__form" action="" method="POST" autocomplete="off">
+            <form class="auth_form" action="" method="POST" autocomplete="off">
+                {% if form.errors %}
+                    {% for error in form.non_field_errors%}
+                        <p class="auth_form__error">{{ error|escape }}</p>
+                    {% endfor %}
+                {% endif %}
                 {% csrf_token %}
 
                 {% for field in form%}

@@ -4,9 +4,9 @@ from spendlytime.web.frontend.react import GenericReactPage
 from spendlytime.web.frontend.auth import AuthLoginView, AuthRegisterView
 
 urlpatterns = [
-    path('', GenericReactPage.as_view()),
+    path('', GenericReactPage.as_view(), name="home"),
     path('auth/', include([
-        path('login/', AuthLoginView.as_view()),
-        path('register/', AuthRegisterView.as_view())
+        path('login/', AuthLoginView.as_view(), name="auth-login"),
+        path('register/', AuthRegisterView.as_view(), name="auth-register")
     ]))
 ]
