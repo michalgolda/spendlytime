@@ -1,0 +1,24 @@
+{% extends "spendlytime/layout.html" %}
+
+{% block content %}
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <div class="auth-logo-wrapper">
+                <div class="logo">
+                    <div class="logo__text">Spendlytime.com</div>
+                </div>
+            </div>
+            <form class="auth__form" action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+
+                <!-- fields -->
+                <div class="auth__form__group">
+                    <!-- one field -->
+                </div>
+                <button class="auth__form__submit">Zaloguj się</button>
+                <p class="auth__form__text">Zapomniałeś hasła?</p>
+                <p class="auth__form__text">Stwórz nowe konto / Zarejestruj się</p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,9 +1,7 @@
-import HelloComponent from './HelloComponent/HelloComponent.container';
-import RouterComponent from './RouterComponent/RouterComponent.container';
-import LogoComponent from './LogoComponent/LogoComponent.container';
+import RouterComponent from './RouterComponent';
+import LogoComponent from './LogoComponent';
 
 export {
     LogoComponent,
-    HelloComponent,
     RouterComponent
 }
