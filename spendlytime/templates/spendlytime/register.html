@@ -11,12 +11,13 @@
             <form class="auth__form" action="" method="POST" autocomplete="off">
                 {% csrf_token %}
 
-                <!-- fields -->
-                <div class="auth__form__group">
-                    <!-- one field -->
-                </div>
-                <button class="auth__form__submit">Zarejestruj się</button>
-                <p class="auth__form__text">Posiadasz już konto? Zaloguj się</p>
+                {% for field in form%}
+                    <div class="auth_form__group">
+                        {{field}}
+                    </div>
+                {% endfor %}
+                <button class="auth_form__submit">Zarejestruj się</button>
+                <p class="auth_form__text">Posiadasz już konto? Zaloguj się</p>
             </form>
         </div>
     </div>

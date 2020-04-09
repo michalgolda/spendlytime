@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="{% static 'spendlytime/dist/app.css' %}">
+
     {% block css %}{% endblock %}
 
     <title>{% block title %}Spendlytime{% endblock %}</title>
@@ -14,10 +16,9 @@
         window.__initialData = {% get_react_config %};
     </script>
 
-
     {% block scripts %}
         {% block locale_js_include %}
-            <script src="{% static "spendlytime/dist/app.js" %}"></script>
+            <script src="{% static 'spendlytime/dist/app.js' %}"></script>
         {% endblock %}
 
         <script

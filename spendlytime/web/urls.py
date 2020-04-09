@@ -1,10 +1,12 @@
 from django.urls import path, include
-from spendlytime.web.frontend.react import ReactView
+
+from spendlytime.web.frontend.react import GenericReactPage
+from spendlytime.web.frontend.auth import AuthLoginView, AuthRegisterView
 
 urlpatterns = [
-    path('', ReactView.as_view()),
+    path('', GenericReactPage.as_view()),
     path('auth/', include([
-        path('login/', ReactView.as_view()),
-        path('register/', ReactView.as_view())
+        path('login/', AuthLoginView.as_view()),
+        path('register/', AuthRegisterView.as_view())
     ]))
 ]
