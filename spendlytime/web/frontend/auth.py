@@ -10,7 +10,7 @@ class AuthLoginView(BaseView):
     """
     The view is implementing login process
     """
-
+    auth_required = False
 
     def respond_login(self, request, context, **kwargs):
         return self.respond("spendlytime/login.html", context)
@@ -53,6 +53,7 @@ class AuthRegisterView(BaseView):
     """
     This view is implementing user creation process
     """
+    auth_required = False
 
     def respond_register(self, request, context, **kwargs):
         return self.respond("spendlytime/register.html", context)
