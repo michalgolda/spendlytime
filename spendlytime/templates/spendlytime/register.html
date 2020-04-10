@@ -9,6 +9,11 @@
                 </div>
             </div>
             <form class="auth__form" action="" method="POST" autocomplete="off">
+                {% if form.errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="auth_form__error">{{ error|escape }}</p>
+                    {% endfor %}
+                {% endif %}
                 {% csrf_token %}
 
                 {% for field in form%}
@@ -16,8 +21,8 @@
                         {{field}}
                     </div>
                 {% endfor %}
-                <button class="auth_form__submit">Zarejestruj się</button>
-                <p class="auth_form__text">Posiadasz już konto? Zaloguj się</p>
+                <button type="submit" name="submit" class="auth_form__submit">Zarejestruj się</button>
+                <a class="auth_form__link" href="{% url 'auth-login' %}">Posiadasz już konto? Zaloguj się</a>
             </form>
         </div>
     </div>
