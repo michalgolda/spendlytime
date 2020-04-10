@@ -19,3 +19,12 @@ class EmailAuthBackend(BaseBackend):
                 return user
         except User.DoesNotExist:
             return None
+
+    def get_user(self, pk):
+        """
+        This field is required for authentication beacause authentication middleware is not set a request.user
+        """
+        try:
+            return User.objects.get(id=pk)
+        except User.DoesNotExist:
+            return None
