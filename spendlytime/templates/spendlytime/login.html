@@ -22,8 +22,8 @@
                     </div>
                 {% endfor %}
                 <button class="auth_form__submit">Zaloguj się</button>
-                <p class="auth_form__text">Zapomniałeś hasła?</p>
-                <p class="auth_form__text">Stwórz nowe konto / Zarejestruj się</p>
+                <a class="auth_form__link">Zapomniałeś hasła?</a>
+                <a class="auth_form__link" href="{% url 'auth-register' %}">Stwórz nowe konto / Zarejestruj się</a>
             </form>
         </div>
     </div>
