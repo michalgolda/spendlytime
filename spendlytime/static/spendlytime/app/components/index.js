@@ -1,9 +1,9 @@
-import Route from './Route';
+import RouteComponent from './RouteComponent';
 import LogoComponent from './LogoComponent';
 import RouterComponent from './RouterComponent';
 
 export {
-    Route,
+    RouteComponent,
     LogoComponent,
     RouterComponent
 }

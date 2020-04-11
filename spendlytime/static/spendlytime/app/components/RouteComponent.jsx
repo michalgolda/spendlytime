@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route as BaseRoute, Redirect } from 'react-router-dom';
 
-export default function Route(props){
+export default function RouteComponent(props){
     const { authRequired } = props;
 
     if (authRequired) {

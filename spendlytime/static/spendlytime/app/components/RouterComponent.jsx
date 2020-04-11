@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Switch } from "react-router-dom";
-import { Route } from '../components';
+import { RouteComponent as Route } from '../components';
 
 function RouterComponent(props) {
     const { routes } = props;
