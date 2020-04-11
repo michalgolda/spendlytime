@@ -1,12 +1,29 @@
 import styled, { keyframes } from 'styled-components';
 import { colors } from '../../utils/styles';
 
+
+export const Container = styled.div`
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background: ${colors.black};
+`;
+
 export const Spinner = styled.div`
-    margin: 150px auto;
-    width: 50px;
-    height: 40px;
-    text-align: center;
+    margin: 0 auto;
+    width: 100px;
+    height: 60px;
     font-size: 10px;
+    padding-top: 250px;
+`;
+
+export const loadingAnimation = keyframes`
+    0%, 40%, 100%{
+        transform: scaleY(0.4);
+    }
+    20%{
+        transform: scaleY(1.0);
+    }
 `;
 
 export const Rect = styled.div`
@@ -20,27 +37,18 @@ export const Rect = styled.div`
     animation: ${loadingAnimation} 1.2s infinite ease-in-out;
 `;
 
-export const React1 = styled.div`
+export const React1 = styled(Rect)`
     animation-delay: -1.1s;
 `;
 
-export const React2 = styled.div`
+export const React2 = styled(Rect)`
     animation-delay: -1.1s;
 `;
 
-export const React3 = styled.div`
+export const React3 = styled(Rect)`
     animation-delay: -1.0s;
 `;
 
-export const React4 = styled.div`
+export const React4 = styled(Rect)`
     animation-delay: -0.9s;
-`;
-
-export const loadingAnimation = keyframes`
-    0%, 40%, 100%{
-        transform: scaleY(0.4);
-    }
-    20%{
-        transform: scaleY(1.0);
-    }
 `;
