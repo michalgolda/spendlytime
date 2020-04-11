@@ -8,6 +8,7 @@ export const Trace = styled.div`
     height: 60px;
     background: ${colors.grey};
     border-radius: 50px;
+    margin-bottom: 15px;
 `;
 
 export const TraceUrl = styled.p`
@@ -31,8 +32,7 @@ export const TraceTime = styled.p`
 export const Actions = styled.div`
     width: 100%;
     height: 60px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 `;
 
 export const ActionsBox = styled.div`
