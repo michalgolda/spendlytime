@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { RouterComponent as Router, LoadingComponent as Loading } from "./components";
+import { RouterComponent as Router } from "./components";
 import { connect } from 'react-redux';
 import { userActions } from './actions';
 import { bindActionCreators } from 'redux';
@@ -25,7 +25,7 @@ export default class App extends Component{
         return (
             <>
                 <GlobalStyles />
-                {this.props.user.loading ? <Loading /> : <Router routes={routes()} />}
+                <Router routes={routes()} />
             </>
         )
     }

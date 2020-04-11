@@ -8,6 +8,7 @@ import * as S from "./TimerView.styles";
 import { LoadingComponent as Loading } from '../../components';
 import { TraceItemComponent as TraceItem } from '../../components';
 
+
 @connect(
     state => ({
         trace: state.trace
@@ -18,8 +19,32 @@ import { TraceItemComponent as TraceItem } from '../../components';
 )
 export default class TimerView extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.state = { url: "" };
+
+        this.handleAddTrace = this.handleAddTrace.bind(this);
+        this.handleChangeTraceUrlInput = this.handleChangeTraceUrlInput.bind(this);
+    }
+
     componentDidMount(){
-        this.actions.fetchTraces();
+        this.props.actions.fetchTraces();
+    }
+
+    handleAddTrace(e){
+        e.preventDefault();
+
+        this.props.actions.addTrace({
+            "trace_url": this.state.url,
+            "trace_time": "0:0"
+        })
+    }
+
+    handleChangeTraceUrlInput(e){
+        e.preventDefault();
+
+        this.setState({ url: e.target.value });
     }
 
     render() {
@@ -33,15 +58,20 @@ export default class TimerView extends Component {
                     </Helmet>
                     <S.Container>
                         <S.Wrapper>
-                            <S.Form>
-                                <S.Input placeholder="Adres strony internetowej" type="text" required/>
+                            <S.Form onSubmit={this.handleAddTrace}>
+                                <S.Input onChange={this.handleChangeTraceUrlInput} placeholder="Adres strony internetowej" type="text" required/>
                                 <S.Submit>+</S.Submit>
                             </S.Form>
                             <S.ListWrapper>
-                                {this.props.trace.data &&
-                                    this.props.trace.data.map((trace) => {
-                                        <TraceItem url={trace.trace_url} time={trace.trace_time}/>
-                                    })
+                                {this.props.trace.data.length != 0 &&
+                                    this.props.trace.data.map((trace) =>
+                                        <TraceItem
+                                            key={trace.id}
+                                            url={trace.trace_url}
+                                            time={trace.trace_time}
+                                            id={trace.id}
+                                        />
+                                    )
                                 }
                             </S.ListWrapper>
                         </S.Wrapper>

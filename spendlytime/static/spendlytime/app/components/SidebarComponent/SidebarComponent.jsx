@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './Sidebar.styles';
 
-export default function SidebarComponent(props){
+export default function SidebarComponent(){
     return(
         <S.Container>
             <S.LogoContainer>
