@@ -14,6 +14,7 @@
   "author": "Michał Gołda",
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "mini-css-extract-plugin": "^0.9.0",
@@ -30,9 +31,13 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "css-loader": "^3.5.1",
+    "history": "^4.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^8.0.2",
     "webpack-cli": "^3.3.11"
   }

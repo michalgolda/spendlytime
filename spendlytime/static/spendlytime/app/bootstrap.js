@@ -2,12 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
 
+import { store } from './store';
+import { Provider } from 'react-redux';
+
 // The function is render any component in root element
 const render = (Component) => {
     const rootEl = document.getElementById("root");
 
     try {
-        ReactDOM.render(<Component />, rootEl);
+        ReactDOM.render(
+            <Provider store={store}>
+                <Component />
+            </Provider>,
+            rootEl
+        );
     } catch (err) {
         console.error(err.message);
     }

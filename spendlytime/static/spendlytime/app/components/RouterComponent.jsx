@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { history } from '../helpers';
+import { Router as BaseRouter, Switch } from "react-router-dom";
 import { RouteComponent as Route, SidebarComponent as Sidebar } from '../components';
 
 import styled from 'styled-components';
@@ -25,14 +26,14 @@ function RouterComponent(props) {
     ));
 
     return (
-        <BrowserRouter>
+        <BaseRouter history={history}>
             <Sidebar />
             <Switch>
                 <Container>
                     {routesItems}
                 </Container>
             </Switch>
-        </BrowserRouter>
+        </BaseRouter>
     );
 }
 

@@ -32,7 +32,7 @@ export default class ApiClient{
             if(!response.ok){
                 // 403 or 401 because api is support to types of authentication
                 if(response.status === 403 || response.status === 401){
-                    history.push('/auth/login');
+                    history.push('/auth/login/');
                 }
                 const error = data.error.message;
                 return Promise.reject(error);
@@ -68,3 +68,5 @@ export default class ApiClient{
         this._resFormat = value;
     }
 }
+
+export const api = new ApiClient();

@@ -1,12 +1,7 @@
 import React from 'react';
 import * as S from './Sidebar.styles';
 
-import { useUser } from '../../hooks';
-
 export default function SidebarComponent(props){
-
-    const user = useUser();
-
     return(
         <S.Container>
             <S.LogoContainer>
