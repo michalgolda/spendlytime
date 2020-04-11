@@ -3,6 +3,14 @@ import PropTypes from "prop-types";
 import { BrowserRouter, Switch } from "react-router-dom";
 import { RouteComponent as Route } from '../components';
 
+import styled from 'styled-components';
+
+export const Container = styled.div`
+    width: calc(100% - 300px);
+    height: 100vh;
+    float: left;
+`;
+
 function RouterComponent(props) {
     const { routes } = props;
     const routesItems = routes.map((route) => (
@@ -17,7 +25,12 @@ function RouterComponent(props) {
 
     return (
         <BrowserRouter>
-            <Switch>{routesItems}</Switch>
+            {props.children}
+            <Switch>
+                <Container>
+                    {routesItems}
+                </Container>
+            </Switch>
         </BrowserRouter>
     );
 }
