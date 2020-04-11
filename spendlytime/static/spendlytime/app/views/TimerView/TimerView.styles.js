@@ -42,7 +42,7 @@ export const Submit = styled.button`
     outline: none;
     float: left;
     margin-left: 10px;
-    font-size: 1.4rem;
+    font-size: 3rem;
 
     &:hover{
         cursor: pointer;
