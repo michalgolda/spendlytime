@@ -46,7 +46,7 @@ export const NavWrapper = styled.div`
 export const NavLink = styled(Link)`
     width: 100%;
     height: auto;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     text-decoration: none;
     color: ${colors.whiteGrey};
