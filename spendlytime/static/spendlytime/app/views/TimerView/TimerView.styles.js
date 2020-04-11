@@ -48,3 +48,10 @@ export const Submit = styled.button`
         cursor: pointer;
     }
 `;
+
+export const ListWrapper = styled.div`
+    width: calc(100% - 10px);
+    height: calc(100% - 120px);
+    padding-right: 10px;
+    margin-top: 50px;
+`;

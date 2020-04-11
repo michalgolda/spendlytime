@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Helmet } from 'react-helmet';
 import * as S from "./TimerView.styles";
 
+import { TraceItemComponent as TraceItem } from '../../components';
+
 export default class TimerView extends Component {
     render() {
         return(
@@ -15,6 +17,9 @@ export default class TimerView extends Component {
                             <S.Input placeholder="Adres strony internetowej" type="text" required/>
                             <S.Submit>+</S.Submit>
                         </S.Form>
+                        <S.ListWrapper>
+                            <TraceItem />
+                        </S.ListWrapper>
                     </S.Wrapper>
                 </S.Container>
             </>
