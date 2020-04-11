@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
+import { Route } from '../components';
 
 function RouterComponent(props) {
     const { routes } = props;
@@ -10,6 +11,7 @@ function RouterComponent(props) {
             path={route.path}
             component={route.component}
             exact={route.exact ? true : false}
+            authRequired={route.authRequired ? true : false}
         />
     ));
 

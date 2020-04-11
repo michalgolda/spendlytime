@@ -1,5 +1,5 @@
-import ProfileView from './ProfileView';
+import TraceListView from './TraceListView/TraceListView';
 
 export {
-    ProfileView
+    TraceListView
 }

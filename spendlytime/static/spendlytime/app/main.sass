@@ -1,9 +1,3 @@
-// Components
-@import "components/_components"
-
-// Views
-@import "views/_views"
-
 // Globals
 *
     padding: 0
@@ -11,3 +5,88 @@
 
 body
     font-family: 'Roboto', sans-serif
+
+// The styles for django views
+.logo
+    width: 280px
+    height: 38px
+    display: inline-block
+
+    &__text
+        color: #00D856
+        font-size: 2.1rem;
+        font-weight: bold
+
+.auth-wrapper
+    width: 100%
+    height: 100vh
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background: #323232
+
+.auth-container
+    width: 300px
+    height: 300px
+    margin: 0 auto
+    padding-bottom: 100px
+
+.auth-logo-wrapper
+    width: 100%
+    height: 38px
+    text-align: center
+    padding-bottom: 30px
+
+.auth_form
+    width: 300px
+    height: 250px
+
+    &__group
+        width: 100%
+        height: 35px
+        margin: 10px 10px 0px 0px
+
+    &__input
+        width: 280px
+        height: 35px
+        background: #404040
+        border: none
+        outline: none
+        color: #fff
+        font-size: 1rem
+        font-weight: 100
+        border-radius: 50px
+        padding-left: 20px
+
+        &::-webkit-input-placeholder
+            color: #5e5e5e
+
+    &__link
+        width: 300px
+        text-align: center
+        color: #5e5e5e
+        text-decoration: none;
+        display: inline-block;
+        padding-top: 10px
+        font-size: .9rem
+
+        &:hover
+            cursor: pointer
+
+    &__submit
+        width: 300px
+        height: 35px
+        color: #fff
+        margin-top: 15px
+        background: #00D856
+        border: none
+        outline: none
+        font-size: 1rem
+        border-radius: 50px
+
+        &:hover
+            cursor: pointer
+    &__error
+        color: #E40029
+        text-align: center
