@@ -9,6 +9,7 @@ export const Container = styled.div`
     width: calc(100% - 300px);
     height: 100vh;
     float: left;
+    margin-left: 300px;
 `;
 
 function RouterComponent(props) {
