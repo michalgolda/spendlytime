@@ -18,7 +18,7 @@ export default class TimerView extends Component {
                             <S.Submit>+</S.Submit>
                         </S.Form>
                         <S.ListWrapper>
-                            <TraceItem />
+                            <TraceItem url="https://google.com" time="00:00"/>
                         </S.ListWrapper>
                     </S.Wrapper>
                 </S.Container>
