@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Switch } from "react-router-dom";
-import { RouteComponent as Route } from '../components';
+import { RouteComponent as Route, SidebarComponent as Sidebar } from '../components';
 
 import styled from 'styled-components';
 
@@ -25,7 +25,7 @@ function RouterComponent(props) {
 
     return (
         <BrowserRouter>
-            {props.children}
+            <Sidebar />
             <Switch>
                 <Container>
                     {routesItems}
