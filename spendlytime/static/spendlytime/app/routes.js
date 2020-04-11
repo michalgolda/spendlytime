@@ -4,7 +4,7 @@ export const routes = () => {
     return [
         {
             "path": "/traces",
-            "component": views.TraceListView,
+            "component": views.TimerView,
             "authRequired": true
         }
     ];

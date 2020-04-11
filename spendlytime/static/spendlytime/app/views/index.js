@@ -1,5 +1,5 @@
-import TraceListView from './TraceListView/TraceListView';
+import TimerView from './TimerView/TimerView';
 
 export {
-    TraceListView
+    TimerView
 }
