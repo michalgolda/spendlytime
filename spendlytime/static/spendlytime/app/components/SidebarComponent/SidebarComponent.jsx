@@ -16,8 +16,8 @@ export default function SidebarComponent(props){
             </S.LogoContainer>
             <S.Nav>
                 <S.NavWrapper>
-                    <S.NavLink>Timer</S.NavLink>
-                    <S.NavLink>Profil</S.NavLink>
+                    <S.NavLink to="/traces/">Timer</S.NavLink>
+                    <S.NavLink to="/profile/">Profil</S.NavLink>
                 </S.NavWrapper>
             </S.Nav>
             <S.Footer>
