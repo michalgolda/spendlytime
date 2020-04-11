@@ -33,7 +33,7 @@ class AuthLoginView(BaseView):
             if user is not None:
                 login(request, user)
 
-                return HttpResponseRedirect(reverse("home"))
+                return HttpResponseRedirect(reverse("main"))
             else:
                 form = self.get_form(request)
                 form.add_error(None, "Oops. Nieprawidłowy email lub hasło.")
