@@ -12,7 +12,7 @@ export default function Route(props){
                 return <Redirect to="auth/login" />;
             }
         } else {
-            return <Redirect to="auth/login" />;
+            return <BaseRoute {...props}/>;
         }
     } else {
         return <BaseRoute {...props}/>;
