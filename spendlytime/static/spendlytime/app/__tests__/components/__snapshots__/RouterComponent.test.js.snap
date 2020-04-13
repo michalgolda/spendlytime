@@ -9,8 +9,7 @@ Array [
       className="sc-AxiKw iJSnil"
     >
       <a
-        className="sc-AxhCb fNyznH"
-        href=""
+        href="/"
         onClick={[Function]}
       >
         Spendlytime
@@ -28,89 +27,12 @@ Array [
         className="sc-AxheI jlStKx"
       >
         <a
-          className="sc-Axmtr lixlRo"
           href="/timer/"
           onClick={[Function]}
         >
           Timer
         </a>
         <a
-          className="sc-Axmtr lixlRo"
-          href="/profile/"
-          onClick={[Function]}
-        >
-          Profil
-        </a>
-      </div>
-    </nav>
-    <div
-      className="sc-AxmLO jXCuTm"
-    >
-      <div
-        className="sc-fzozJi knZkxj"
-      >
-        <div
-          className="sc-fzoLsD dFOuNF"
-        >
-          <div
-            className="sc-fzpans fgNXnI"
-          />
-          <p
-            className="sc-fzplWN DiCyT"
-          >
-            michalgolda@vp.pl
-          </p>
-        </div>
-      </div>
-      <p
-        className="sc-fznyAO lmLjiP"
-      >
-        Ⓒ 2020 SpendlyTime
-      </p>
-    </div>
-  </div>,
-  <div
-    className="sc-AxjAm eMabRX"
-  />,
-]
-`;
-
-exports[`Trace item component Matches the snapshot 1`] = `
-Array [
-  <div
-    className="sc-AxirZ dDKSas"
-  >
-    <div
-      className="sc-AxiKw iJSnil"
-    >
-      <a
-        className="sc-AxhCb fNyznH"
-        href=""
-        onClick={[Function]}
-      >
-        Spendlytime
-        <small
-          className="sc-AxhUy hqhIHq"
-        >
-          .com
-        </small>
-      </a>
-    </div>
-    <nav
-      className="sc-AxgMl fcSAsy"
-    >
-      <div
-        className="sc-AxheI jlStKx"
-      >
-        <a
-          className="sc-Axmtr lixlRo"
-          href="/timer/"
-          onClick={[Function]}
-        >
-          Timer
-        </a>
-        <a
-          className="sc-Axmtr lixlRo"
           href="/profile/"
           onClick={[Function]}
         >

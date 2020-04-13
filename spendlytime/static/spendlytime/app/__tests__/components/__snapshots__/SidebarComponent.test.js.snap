@@ -8,8 +8,7 @@ exports[`Sidebar component Matches the snapshot 1`] = `
     className="sc-AxiKw iJSnil"
   >
     <a
-      className="sc-AxhCb fNyznH"
-      href=""
+      href="/"
       onClick={[Function]}
     >
       Spendlytime
@@ -27,14 +26,12 @@ exports[`Sidebar component Matches the snapshot 1`] = `
       className="sc-AxheI jlStKx"
     >
       <a
-        className="sc-Axmtr lixlRo"
         href="/timer/"
         onClick={[Function]}
       >
         Timer
       </a>
       <a
-        className="sc-Axmtr lixlRo"
         href="/profile/"
         onClick={[Function]}
       >

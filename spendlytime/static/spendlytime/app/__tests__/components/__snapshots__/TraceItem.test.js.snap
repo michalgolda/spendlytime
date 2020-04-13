@@ -10,10 +10,14 @@ exports[`Trace item component Matches the snapshot 1`] = `
   >
     <p
       className="sc-fzpjYC dUbwPq"
-    />
+    >
+      test
+    </p>
     <p
       className="sc-fznxsB gPUzsl"
-    />
+    >
+      0
+    </p>
   </div>
 </div>
 `;
