@@ -1,5 +1,5 @@
-import { userConstants } from './user.constants';
-import { traceConstants } from './trace.constants';
+import { userConstants } from './userConstants';
+import { traceConstants } from './traceConstants';
 
 export {
     userConstants,

@@ -1,6 +1,6 @@
 import { userConstants } from '../constants';
 
-const initialState = {loading: true, data: null};
+const initialState = {loading: false, data: null};
 
 export default function userReducer(state = initialState, action){
     switch(action.type){

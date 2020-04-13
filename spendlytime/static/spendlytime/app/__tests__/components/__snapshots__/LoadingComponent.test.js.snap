@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component Matches the snapshot 1`] = `
+<div
+  className="sc-fznKkj gYGHTt"
+>
+  <div
+    className="sc-fznZeY kLCzmO"
+  >
+    <div
+      className="sc-fzokOt sc-fzqBZW cSCDoa"
+    />
+    <div
+      className="sc-fzokOt sc-fzqNJr cBaXnD"
+    />
+    <div
+      className="sc-fzokOt sc-fzoyAV geMyHI"
+    />
+    <div
+      className="sc-fzokOt sc-fzoLag eJnPjw"
+    />
+  </div>
+</div>
+`;
