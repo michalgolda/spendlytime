@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "The application for track your spend time on internet.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "webpack-dev-server --mode development --progress",
+    "test": "jest --config ./spendlytime/static/spendlytime/app/jest.config.js ./spendlytime/static/spendlytime/app --watch",
     "build": "webpack"
   },
   "repository": {
@@ -15,12 +15,16 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
+    "babel7-jest": "^1.0.1",
+    "jest": "^25.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react-helmet": "^6.0.0",
+    "react-test-renderer": "^16.13.1",
     "style-loader": "^1.1.3",
     "styled-components": "^5.1.0",
     "webpack": "^4.42.1",
@@ -32,6 +36,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "css-loader": "^3.5.1",
     "history": "^4.10.1",
+    "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

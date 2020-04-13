@@ -1,6 +1,9 @@
 import { config } from './config';
 import { history } from './helpers';
 
+// This module is required for test environment
+const fetch = require("node-fetch");
+
 /** The class using for calling to api */
 export default class ApiClient{
 
