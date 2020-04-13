@@ -11,7 +11,10 @@ function LinkComponent({ children, link }){
 }
 
 LinkComponent.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array
+    ]),
     link: PropTypes.string
 }
 
