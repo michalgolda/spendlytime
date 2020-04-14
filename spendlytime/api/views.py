@@ -1,3 +1,6 @@
+from datetime import timedelta, datetime
+
+from django.utils import timezone
 from django.http import Http404
 from django.contrib.auth.models import User
 
@@ -35,7 +38,7 @@ class TraceListAPIView(APIView):
             traces = Trace.objects.filter(
                 id=pk, user_id=current_user.id)
             if not traces:
-                return Response([], status.HTTP_404_NOT_FOUND)
+                raise Http404
 
         serializer = serializers.TraceSerializer(traces, many=True)
 
@@ -86,3 +89,41 @@ class TokenAPIView(APIView):
         # Create token if not exist of current user but exist return token
         token = Token.objects.get_or_create(user=current_user)
         return Response({"api-token": str(token[0])})
+
+
+class TimerAPIView(APIView):
+    """
+    The main class for timer endpoint
+    """
+    # permission_classes = [IsAuthenticated]
+
+    def get_object(self, id: int):
+        try:
+            return Trace.objects.get(id=id)
+        except Trace.DoesNotExist:
+            raise Http404
+
+    def post(self, request, pk):
+        serializer = serializers.TimerSerializer(data=request.data)
+        if serializer.is_valid():
+            trace = self.get_object(pk)
+
+            # Convert new time to timedelta
+            new_time = serializer.data["time"]
+            new_time = datetime.strptime(new_time, "%H:%M:%S")
+            new_time = timedelta(hours=new_time.hour, minutes=new_time.minute, seconds=new_time.second)
+
+            # Convert last trace time to timedelta and add new time to last track time
+            last_time = trace.trace_time
+            last_time = timedelta(hours=last_time.hour, minutes=last_time.minute, seconds=last_time.second)
+            time = last_time + new_time
+
+            # str(time) is required because django models is convert str to TimeField
+            trace.trace_time = str(time)
+            trace.save()
+
+            # Response current time value
+            return Response({"trace_time": str(time)}, status.HTTP_200_OK)
+        else:
+            errors = serializer.errors
+            return Response(errors, HTTP_400_BAD_REQUEST)

@@ -26,3 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'is_staff',
                   'is_active', 'date_joined', 'last_login']
+
+
+class TimerSerializer(serializers.Serializer):
+    time = serializers.TimeField()

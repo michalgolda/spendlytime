@@ -8,7 +8,10 @@ urlpatterns = [
     ])),
     path('traces/', include([
         path('', views.TraceListAPIView.as_view(), name="api-traces"),
-        path('<int:pk>/', views.TraceListAPIView.as_view(), name="api-trace-by-id")
+        path('<int:pk>/', include([
+            path('', views.TraceListAPIView.as_view(), name="api-trace-by-id"),
+            path('timer/', views.TimerAPIView.as_view(), name="api-trace-timer")
+        ]))
     ])),
     path('users/', include([
         path('me/', views.MeAPIView.as_view(), name="api-me")

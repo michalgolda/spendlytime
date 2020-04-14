@@ -7,7 +7,7 @@ class Trace(models.Model):
     Base model of Trace
     """
     trace_url = models.CharField(max_length=150)
-    trace_time = models.TimeField()
+    trace_time = models.TimeField(default="0:0")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
