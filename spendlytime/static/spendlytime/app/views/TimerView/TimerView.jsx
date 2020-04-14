@@ -63,7 +63,7 @@ export default class TimerView extends Component {
                                 <S.Submit>+</S.Submit>
                             </S.Form>
                             <S.ListWrapper>
-                                {this.props.trace.data.length != 0 &&
+                                {this.props.trace.data &&
                                     this.props.trace.data.map((trace) =>
                                         <TraceItem
                                             key={trace.id}
