@@ -1,18 +1,19 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import * as S from './Sidebar.styles';
 
 export default function SidebarComponent(){
     return(
         <S.Container>
             <S.LogoContainer>
-                <S.Logo>
+                <Link to="/">
                     Spendlytime<S.LogoSmall>.com</S.LogoSmall>
-                </S.Logo>
+                </Link>
             </S.LogoContainer>
             <S.Nav>
                 <S.NavWrapper>
-                    <S.NavLink link="/timer/">Timer</S.NavLink>
-                    <S.NavLink link="/profile/">Profil</S.NavLink>
+                    <NavLink activeStyle={{color: "#00D856"}} to="/timer/">Timer</NavLink>
+                    <NavLink activeStyle={{color: "#00D856"}} to="/profile/">Profil</NavLink>
                 </S.NavWrapper>
             </S.Nav>
             <S.Footer>
