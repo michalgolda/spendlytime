@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors } from '../../utils/styles';
-import { LinkComponent as Link } from '../../components';
 
 export const Container = styled.div`
     width: 300px;
@@ -15,13 +14,13 @@ export const LogoContainer = styled.div`
     height: 50px;
     text-align: center;
     padding: 20px 0px 0px 0px;
-`;
 
-export const Logo = styled(Link)`
-    color: ${colors.green};
-    font-size: 1.8rem;
-    text-decoration: none;
-    font-weight: bold;
+    a {
+        color: ${colors.green};
+        font-size: 1.8rem;
+        text-decoration: none;
+        font-weight: bold;
+    }
 `;
 
 export const LogoSmall = styled.small`
@@ -41,21 +40,22 @@ export const NavWrapper = styled.div`
     width: 100%;
     height: auto;
     margin-top: 100px;
-`;
+    a {
+        width: 100%;
+        height: auto;
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: ${colors.whiteGrey};
+        display: inline-block;
+        padding-top: 20px;
+    }
 
-export const NavLink = styled(Link)`
-    width: 100%;
-    height: auto;
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: ${colors.whiteGrey};
-    display: inline-block;
-    padding-top: 20px;
-    &:hover{
+    a:hover {
         color: ${colors.green};
     }
 `;
+
 
 export const Footer = styled.div`
     width: 100%;
