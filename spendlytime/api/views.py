@@ -13,7 +13,7 @@ from rest_framework.exceptions import APIException
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 
-from spendlytime.models import Trace
+from spendlytime.models import Trace, TimeEntry
 from spendlytime.api import serializers
 
 
@@ -35,10 +35,13 @@ class TraceListAPIView(APIView):
         if not pk:
             traces = Trace.objects.filter(user_id=current_user.id).all()
         else:
-            traces = Trace.objects.filter(
-                id=pk, user_id=current_user.id)
-            if not traces:
+            trace = Trace.objects.filter(id=pk, user_id=current_user.id).first()
+            if not trace:
                 raise Http404
+
+            serializer = serializers.TraceSerializer(trace)
+
+            return Response(serializer.data)
 
         serializer = serializers.TraceSerializer(traces, many=True)
 
@@ -91,39 +94,56 @@ class TokenAPIView(APIView):
         return Response({"api-token": str(token[0])})
 
 
-class TimerAPIView(APIView):
-    """
-    The main class for timer endpoint
-    """
+class TimeEntriesAPIView(APIView):
     # permission_classes = [IsAuthenticated]
 
-    def get_object(self, id: int):
+    def get_trace_object(self, pk: int):
         try:
-            return Trace.objects.get(id=id)
+            return Trace.objects.get(id=pk)
         except Trace.DoesNotExist:
             raise Http404
 
-    def post(self, request, pk):
-        serializer = serializers.TimerSerializer(data=request.data)
+    def get_time_entry_object(self, pk: int):
+        try:
+            return TimeEntry.objects.get(id=pk)
+        except TimeEntry.DoesNotExist:
+            raise Http404
+
+    def post(self, request):
+        serializer = serializers.TimeEntryStartSerializer(data=request.data)
         if serializer.is_valid():
-            trace = self.get_object(pk)
+            trace = self.get_trace_object(serializer.data["tid"])
 
-            # Convert new time to timedelta
-            new_time = serializer.data["time"]
-            new_time = datetime.strptime(new_time, "%H:%M:%S")
-            new_time = timedelta(hours=new_time.hour, minutes=new_time.minute, seconds=new_time.second)
+            time_entry = TimeEntry()
+            time_entry.start = serializer.data["start"]
+            time_entry.tid = trace.id
+            time_entry.save()
 
-            # Convert last trace time to timedelta and add new time to last track time
-            last_time = trace.trace_time
-            last_time = timedelta(hours=last_time.hour, minutes=last_time.minute, seconds=last_time.second)
-            time = last_time + new_time
+            serializer = serializers.TimeEntrySerializer(time_entry)
 
-            # str(time) is required because django models is convert str to TimeField
-            trace.trace_time = str(time)
-            trace.save()
-
-            # Response current time value
-            return Response({"trace_time": str(time)}, status.HTTP_200_OK)
+            return Response(serializer.data)
         else:
             errors = serializer.errors
-            return Response(errors, HTTP_400_BAD_REQUEST)
+            return Response(errors, status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, pk: int = None):
+        if not pk:
+            raise Http404
+
+        serializer = serializers.TimeEntryStopSerializer(data=request.data)
+        if serializer.is_valid():
+            trace = self.get_trace_object(serializer.data["tid"])
+            time_entry = self.get_time_entry_object(pk)
+
+            time_entry.stop = serializer.data["stop"]
+            time_entry.duration = serializer.data["duration"]
+            trace.duration += serializer.data["duration"]
+            trace.save()
+            time_entry.save()
+            
+            serializer = serializers.TimeEntrySerializer(time_entry)
+
+            return Response(serializer.data)
+        else:
+            errors = serializer.errors
+            return Response(errors, status.HTTP_400_BAD_REQUEST)
