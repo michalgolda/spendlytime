@@ -37,7 +37,7 @@ export default class TimerView extends Component {
 
         this.props.actions.addTrace({
             "trace_url": this.state.url,
-            "trace_time": "0:0"
+            "duration": 0
         })
     }
 
@@ -68,7 +68,7 @@ export default class TimerView extends Component {
                                         <TraceItem
                                             key={trace.id}
                                             url={trace.trace_url}
-                                            time={trace.trace_time}
+                                            duration={trace.duration}
                                             id={trace.id}
                                         />
                                     )
