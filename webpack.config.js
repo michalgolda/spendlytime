@@ -2,7 +2,7 @@ const path = require("path");
 const { env } = require("process");
 
 // This plugin compile all sass, scss files to one css so that to use in django views
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // The all paths to use this config
 const paths = {
@@ -43,12 +43,13 @@ const appConfig = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            esModule: true
-                        }
+                            esModule: true,
+                        },
                     },
-                    'css-loader',
-                    'sass-loader']
-            }
+                    "css-loader",
+                    "sass-loader",
+                ],
+            },
         ],
     },
     resolve: {
@@ -72,16 +73,20 @@ if (WEBPACK_MODE === "development") {
             ignored: ["node_modules"],
         },
         publicPath: "/_assets/",
+        proxy: {
+            "/api/*": {
+                target: "http://localhost:8001",
+                secure: false
+            },
+        },
     };
-
-
 }
 // Load plguins to webpack config
 appConfig.plugins = [
     new MiniCssExtractPlugin({
-        filename: '[name].css',
-        chunkFilename: '[id].css'
-    })
-]
+        filename: "[name].css",
+        chunkFilename: "[id].css",
+    }),
+];
 
 module.exports = [appConfig];
